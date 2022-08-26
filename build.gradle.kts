@@ -32,7 +32,7 @@ tasks {
 
     register<Copy>("packageDistribution") {
         dependsOn("shadowJar")
-        from("${project.rootDir}/scripts/cli-app-template.sh")
+        from("${project.rootDir}/scripts/sonarqube-report.sh")
         from("${project.buildDir}/libs/${project.name}.jar")
         into("${project.buildDir}/dist")
     }
@@ -40,11 +40,11 @@ tasks {
 
 application {
     // Define the main class for the application.
-    mainClass.set("de.beiertu.cli.template.AppKt")
+    mainClass.set("com.github.beiertumms.sonarqubereport.AppKt")
 }
 
 tasks.withType<ShadowJar> {
-    archiveBaseName.set("cli-app-template")
+    archiveBaseName.set("sonarqube-report")
     archiveClassifier.set("")
     archiveVersion.set("")
 }

@@ -1,4 +1,4 @@
-package de.beiertu.cli.template
+package com.github.beiertumms.sonarqubereport
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument

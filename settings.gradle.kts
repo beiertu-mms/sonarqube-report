@@ -1,2 +1,2 @@
 
-rootProject.name = "cli-app-template"
+rootProject.name = "sonarqube-report"

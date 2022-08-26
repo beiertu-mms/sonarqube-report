@@ -1,4 +1,4 @@
-# Cli app template
+# sonarqube-report
 ![build on master][ci badge]
 ![License][license badge]
 
@@ -33,6 +33,6 @@ make uninstall
 ## License
 Distributed under the MIT License. See [LICENSE][license] for more information.
 
-[ci badge]: https://img.shields.io/github/workflow/status/beiertu-mms/cli-app-template/CI/master
-[license badge]: https://img.shields.io/github/license/beiertu-mms/cli-app-template
-[license]: https://github.com/beiertu-mms/cli-app-template/blob/master/LICENSE
+[ci badge]: https://img.shields.io/github/workflow/status/beiertu-mms/sonarqube-report/CI/master
+[license badge]: https://img.shields.io/github/license/beiertu-mms/sonarqube-report
+[license]: https://github.com/beiertu-mms/sonarqube-report/blob/master/LICENSE
