@@ -7,12 +7,12 @@ DIST_DIR = ./build/dist
 BUILDER = ./gradlew
 
 uninstall:
-	rm -v -f $(BIN)/cli-app-template* 2>/dev/null || echo "nothing to remove"
+	rm -v -f $(BIN)/sonarqube-report* 2>/dev/null || echo "nothing to remove"
 
 install: build
-	chmod -v +x $(DIST_DIR)/cli-app-template.sh
-	cp -v -f $(DIST_DIR)/cli-app-template.sh $(BIN)/cli-app-template
-	cp -v -f $(DIST_DIR)/cli-app-template.jar $(BIN)/cli-app-template.jar
+	chmod -v +x $(DIST_DIR)/sonarqube-report.sh
+	cp -v -f $(DIST_DIR)/sonarqube-report.sh $(BIN)/sonarqube-report
+	cp -v -f $(DIST_DIR)/sonarqube-report.jar $(BIN)/sonarqube-report.jar
 
 .PHONY: build
 build: clean 
