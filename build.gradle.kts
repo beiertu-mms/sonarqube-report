@@ -23,6 +23,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("com.github.ajalt.clikt:clikt:3.5.0")
+
+    implementation(platform("org.http4k:http4k-bom:4.30.4.0"))
+    implementation("org.http4k:http4k-client-apache")
+    implementation("org.http4k:http4k-format-jackson")
 }
 
 tasks {
