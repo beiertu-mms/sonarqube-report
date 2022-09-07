@@ -27,6 +27,13 @@ dependencies {
     implementation(platform("org.http4k:http4k-bom:4.30.4.0"))
     implementation("org.http4k:http4k-client-apache")
     implementation("org.http4k:http4k-format-jackson")
+
+    // testing
+    testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
+    testImplementation("io.strikt:strikt-core:0.34.1")
+    testImplementation("io.mockk:mockk:1.12.4")
 }
 
 tasks {

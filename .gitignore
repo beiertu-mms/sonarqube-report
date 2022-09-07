@@ -6,3 +6,6 @@ build
 out
 
 *.jar
+
+sonar-report.md
+.attach_pid*
