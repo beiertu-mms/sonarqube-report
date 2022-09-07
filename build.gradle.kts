@@ -1,4 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     kotlin("jvm") version "1.7.10"
@@ -39,6 +41,30 @@ dependencies {
 tasks {
     test {
         useJUnitPlatform()
+        testLogging {
+            showCauses = true
+            exceptionFormat = TestExceptionFormat.SHORT
+            events = setOf(
+                TestLogEvent.PASSED,
+                TestLogEvent.FAILED,
+                TestLogEvent.SKIPPED
+            )
+            showExceptions = true
+            afterSuite(
+                KotlinClosure2({ desc: TestDescriptor, result: TestResult ->
+                    if (desc.parent == null) {
+                        val output = "Results: ${result.resultType} (${result.testCount} tests, " +
+                            "${result.successfulTestCount} passed, " +
+                            "${result.failedTestCount} failed, " +
+                            "${result.skippedTestCount} skipped)"
+                        val startItem = "| "
+                        val endItem = " |"
+                        val repeatLength = startItem.length + output.length + endItem.length
+                        println("\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(repeatLength)))
+                    }
+                })
+            )
+        }
     }
 
     register<Copy>("packageDistribution") {
