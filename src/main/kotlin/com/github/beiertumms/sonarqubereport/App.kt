@@ -50,7 +50,7 @@ class App(
         componentKeys.split(",")
             .map(String::trim)
             .filter(String::isNotBlank)
-            .map { fetchMetricsForSonarComponent(it) }
+            .map { fetchMetricsForSonarComponent(it, requireNotNull(jwtSession), requireNotNull(xsrfToken)) }
             .map(::parseResultToMarkdownTableRow)
             .let { sonarResult ->
                 File("./sonar-report.md")
@@ -58,13 +58,17 @@ class App(
             }
     }
 
-    private fun fetchMetricsForSonarComponent(
+    internal fun fetchMetricsForSonarComponent(
         componentKey: String,
+        jwt: String,
+        token: String,
+        sonarUrl: String = sonarQubeUrl,
+        metrics: String = metricKeys,
     ): SonarComponent = try {
-        Request(Method.GET, "$sonarQubeUrl/api/measures/component")
+        Request(Method.GET, "$sonarUrl/api/measures/component")
             .query("component", componentKey)
-            .query("metricKeys", metricKeys)
-            .header("cookie", "XSRF-TOKEN=$xsrfToken; JWT-SESSION=$jwtSession")
+            .query("metricKeys", metrics)
+            .header("cookie", "XSRF-TOKEN=$token; JWT-SESSION=$jwt")
             .let(httpClient::invoke)
             .let(::handleSonarApiResponse)
     } catch (e: Exception) {
