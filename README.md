@@ -2,7 +2,7 @@
 ![build on master][ci badge]
 ![License][license badge]
 
-My simple template to create a command-line interface (cli) with Kotlin.
+A simple CLI to fetch SonarQube metric(s) for component(s) and write them to a Markdown file.
 
 ## Usage
 When creating a new repository on GitHub, just choose this as a template.  
