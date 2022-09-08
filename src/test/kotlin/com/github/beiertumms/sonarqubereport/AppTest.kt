@@ -8,21 +8,37 @@ import org.http4k.core.MemoryResponse
 import org.http4k.core.Method
 import org.http4k.core.Status
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.fail
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import strikt.api.expectThat
 import strikt.assertions.hasSize
 import strikt.assertions.isEqualTo
 import strikt.assertions.isNotEmpty
 import strikt.assertions.isNotNull
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class AppTest {
 
     private val httpClient = mockk<HttpHandler>()
     private val app = App(httpClient)
 
-    @Test
-    fun testParseResultToMarkdownTableRow() {
-        val sonarComponent = SonarComponent(
+    @ParameterizedTest
+    @MethodSource("provideTestDataForTestParseResultToMarkdownTableRow")
+    fun testParseResultToMarkdownTableRow(
+        sonarComponent: SonarComponent,
+        headerSize: Int,
+        expectedOutput: String,
+    ) {
+        expectThat(
+            app.parseResultToMarkdownTableRow(sonarComponent, headerSize)
+        ).isEqualTo(expectedOutput)
+    }
+
+    private fun provideTestDataForTestParseResultToMarkdownTableRow(): List<Arguments> =
+        SonarComponent(
             component = SonarComponent.Component(
                 key = "export-service",
                 name = "export-service",
@@ -42,12 +58,12 @@ internal class AppTest {
                     ),
                 ),
             )
-        )
-
-        val result = app.parseResultToMarkdownTableRow(sonarComponent)
-
-        expectThat(result).isEqualTo("|export-service|49|55.9|22|")
-    }
+        ).let { sonarComponent ->
+            listOf(
+                Arguments.of(sonarComponent, 3, "|export-service|49|55.9|22|"),
+                Arguments.of(sonarComponent, 5, "|export-service|49|55.9|22|n/a|n/a|"),
+            )
+        }
 
     @Test
     fun testPrintAsMarkdown() {
@@ -56,7 +72,7 @@ internal class AppTest {
                 "|service A|49|55.9|22|",
                 "|service B|35|73.9|30|",
             ),
-            keys = "coverage,violations,complexity"
+            headers = listOf("complexity", "coverage", "violations")
         )
 
         expectThat(result).isEqualTo(

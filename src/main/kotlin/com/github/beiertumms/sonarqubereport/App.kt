@@ -47,14 +47,20 @@ class App(
     private val sonarComponentLens = Body.auto<SonarComponent>().toLens()
 
     override fun run() {
+        val headers = metricKeys
+            .split(",")
+            .map(String::trim)
+            .filter(String::isNotBlank)
+            .sorted()
+
         componentKeys.split(",")
             .map(String::trim)
             .filter(String::isNotBlank)
             .map { fetchMetricsForSonarComponent(it, requireNotNull(jwtSession), requireNotNull(xsrfToken)) }
-            .map(::parseResultToMarkdownTableRow)
+            .map { parseResultToMarkdownTableRow(it, headers.size) }
             .let { sonarResult ->
                 File("./sonar-report.md")
-                    .writeText(printAsMarkdown(sonarResult, metricKeys))
+                    .writeText(printAsMarkdown(sonarResult, headers))
             }
     }
 
@@ -81,21 +87,16 @@ class App(
         else -> throw IllegalStateException("failed to fetch SonarQube metrics, cause: $response")
     }
 
-    internal fun parseResultToMarkdownTableRow(sonarComponent: SonarComponent): String = sonarComponent.component.let {
+    internal fun parseResultToMarkdownTableRow(sonarComponent: SonarComponent, headerSize: Int): String = sonarComponent.component.let {
         val str = listOf(it.key)
             .plus(it.sortedMeasures().map(SonarComponent.Measure::value))
             .joinToString("|")
 
-        "|$str|"
+        val diff = headerSize.minus(it.measures.size)
+        if (diff == 0) "|$str|" else "|$str|".plus("n/a|".repeat(diff))
     }
 
-    internal fun printAsMarkdown(sonarResult: List<String>, keys: String): String {
-        val headers = keys
-            .split(",")
-            .map(String::trim)
-            .filter(String::isNotBlank)
-            .sorted()
-
+    internal fun printAsMarkdown(sonarResult: List<String>, headers: List<String>): String {
         return listOf(
             "# SonarQube Report\n",
             "See [SonarQube metrics](https://docs.sonarqube.org/latest/user-guide/metric-definitions/) " +
