@@ -5,9 +5,20 @@
 A simple CLI to fetch SonarQube metric(s) for component(s) and write them to a Markdown file.
 
 ## Usage
-When creating a new repository on GitHub, just choose this as a template.  
-After the new repository is created, the clean up workflow will run and
-it will replace/remove/update the repository using the new repository's name.
+
+Build the jar
+
+```sh
+./gradlew clean build
+```
+
+Use the jar
+
+```sh
+java -jar build/libs/sonarqube-report.jar [OPTIONS]
+```
+
+Run the jar with the `--help` option or without any options for more information.
 
 ## Build requirements
 - JDK 17
