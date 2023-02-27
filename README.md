@@ -1,6 +1,6 @@
 # sonarqube-report
-[![CI](https://github.com/beiertu-mms/cli-app-template/actions/workflows/ci.yaml/badge.svg)][ci badge]
-[![License](https://img.shields.io/github/license/beiertu-mms/sonarqube-report)][license badge]
+[![CI](https://github.com/beiertu-mms/cli-app-template/actions/workflows/ci.yaml/badge.svg)](./.github/workflows/ci.yaml)
+[![License](https://img.shields.io/github/license/beiertu-mms/sonarqube-report)](./LICENSE)
 
 A simple CLI to fetch SonarQube metric(s) for component(s) and write them to a Markdown file.
 
@@ -35,14 +35,11 @@ make install
 
 **Uninstall**:
 The same Makefile also contains an uninstall step,
-which will remove the buildt jar and script from the user's bin folder.
+which will remove the built jar and script from the user's bin folder.
 
 ```bash
 make uninstall
 ```
 
 ## License
-Distributed under the MIT License. See [LICENSE][license] for more information.
-
-[ci badge]: https://github.com/beiertu-mms/cli-app-template/actions/workflows/ci.yaml
-[license]: https://github.com/beiertu-mms/sonarqube-report/blob/master/LICENSE
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
