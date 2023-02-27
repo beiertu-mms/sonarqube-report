@@ -1,6 +1,6 @@
 # sonarqube-report
-![build on master][ci badge]
-![License][license badge]
+[![CI](https://github.com/beiertu-mms/cli-app-template/actions/workflows/ci.yaml/badge.svg)](./.github/workflows/ci.yaml)
+[![License](https://img.shields.io/github/license/beiertu-mms/sonarqube-report)](./LICENSE)
 
 A simple CLI to fetch SonarQube metric(s) for component(s) and write them to a Markdown file.
 
@@ -21,8 +21,8 @@ java -jar build/libs/sonarqube-report.jar [OPTIONS]
 Run the jar with the `--help` option or without any options for more information.
 
 ## Build requirements
-- JDK 17
-- Gradle >= 7 (optional)
+- JDK >= 17
+- Gradle >= 8 (optional)
 
 ## Installation
 **Install**:
@@ -35,15 +35,11 @@ make install
 
 **Uninstall**:
 The same Makefile also contains an uninstall step,
-which will remove the buildt jar and script from the user's bin folder.
+which will remove the built jar and script from the user's bin folder.
 
 ```bash
 make uninstall
 ```
 
 ## License
-Distributed under the MIT License. See [LICENSE][license] for more information.
-
-[ci badge]: https://img.shields.io/github/workflow/status/beiertu-mms/sonarqube-report/CI/master
-[license badge]: https://img.shields.io/github/license/beiertu-mms/sonarqube-report
-[license]: https://github.com/beiertu-mms/sonarqube-report/blob/master/LICENSE
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
