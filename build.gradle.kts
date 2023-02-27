@@ -76,6 +76,12 @@ tasks {
         from("${project.buildDir}/libs/${project.name}.jar")
         into("${project.buildDir}/dist")
     }
+
+    jar {
+        dependsOn("startShadowScripts")
+        dependsOn("shadowDistTar")
+        dependsOn("shadowDistZip")
+    }
 }
 
 application {
