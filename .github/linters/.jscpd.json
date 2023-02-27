@@ -1,0 +1,15 @@
+{
+  "threshold": 0,
+  "reporters": [
+    "consoleFull",
+    "markdown"
+  ],
+  "ignore": [
+    "**/*.md",
+    "**/pom.xml",
+    "**/libs/**/*Client.kt",
+    "**/src/test/**",
+    "**/dev/**"
+  ],
+  "absolute": true
+}
