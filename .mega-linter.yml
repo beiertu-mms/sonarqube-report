@@ -1,0 +1,27 @@
+# Configuration file for MegaLinter
+# See https://megalinter.io/configuration/ for all available configurations
+APPLY_FIXES: all # all, none, or list of linter keys
+LOG_LEVEL: INFO
+PRINT_ALPACA: false
+LINTER_RULES_PATH: .github/linters
+SHOW_ELAPSED_TIME: false
+FILEIO_REPORTER: false
+IGNORE_GENERATED_FILES: true
+IGNORE_GITIGNORED_FILES: true
+FORMATTERS_DISABLE_ERRORS: true # Set to false if formatter issues should be reported as errors
+DISABLE:
+  - SPELL
+ENABLE_LINTERS:
+  # see https://megalinter.io/latest/flavors/java/ for all available linters used with java flavor
+  - ACTION_ACTIONLINT
+  - BASH_SHELLCHECK
+  - COPYPASTE_JSCPD
+  - EDITORCONFIG_EDITORCONFIG_CHECKER
+  - JSON_JSONLINT
+  - KOTLIN_KTLINT
+  - MARKDOWN_MARKDOWNLINT
+  - REPOSITORY_GITLEAKS
+  - YAML_YAMLLINT
+FILTER_REGEX_EXCLUDE: '(gradlew|.gradle/.*)'
+DISABLE_ERRORS: false
+VALIDATE_ALL_CODEBASE: false
