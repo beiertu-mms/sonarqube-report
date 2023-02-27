@@ -1,6 +1,6 @@
 # sonarqube-report
-![build on master][ci badge]
-![License][license badge]
+[![CI](https://github.com/beiertu-mms/cli-app-template/actions/workflows/ci.yaml/badge.svg)][ci badge]
+[![License](https://img.shields.io/github/license/beiertu-mms/sonarqube-report)][license badge]
 
 A simple CLI to fetch SonarQube metric(s) for component(s) and write them to a Markdown file.
 
@@ -44,6 +44,5 @@ make uninstall
 ## License
 Distributed under the MIT License. See [LICENSE][license] for more information.
 
-[ci badge]: https://img.shields.io/github/workflow/status/beiertu-mms/sonarqube-report/CI/master
-[license badge]: https://img.shields.io/github/license/beiertu-mms/sonarqube-report
+[ci badge]: https://github.com/beiertu-mms/cli-app-template/actions/workflows/ci.yaml
 [license]: https://github.com/beiertu-mms/sonarqube-report/blob/master/LICENSE
