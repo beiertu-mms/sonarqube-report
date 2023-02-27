@@ -21,8 +21,8 @@ java -jar build/libs/sonarqube-report.jar [OPTIONS]
 Run the jar with the `--help` option or without any options for more information.
 
 ## Build requirements
-- JDK 17
-- Gradle >= 7 (optional)
+- JDK >= 17
+- Gradle >= 8 (optional)
 
 ## Installation
 **Install**:
