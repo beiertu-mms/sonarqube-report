@@ -31,7 +31,7 @@ dependencies {
     implementation("org.http4k:http4k-format-jackson")
 
     implementation("org.slf4j:slf4j-api:2.0.7")
-    implementation("org.slf4j:slf4j-simple:2.0.6")
+    implementation("org.slf4j:slf4j-simple:2.0.7")
 
     // testing
     testImplementation(kotlin("test"))
