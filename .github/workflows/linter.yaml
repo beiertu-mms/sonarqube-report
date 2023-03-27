@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0 # can be removed if VALIDATE_ALL_CODEBASE = true
 
       - name: Lint
-        uses: oxsecurity/megalinter/flavors/java@v6.20.1 # see https://megalinter.io/flavors/
+        uses: oxsecurity/megalinter/flavors/java@v6.21.0 # see https://megalinter.io/flavors/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false  # Lint only changed files
