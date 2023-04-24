@@ -25,7 +25,7 @@ jobs:
         run: ./gradlew build --info --no-daemon
 
       - name: Fetch PR metadata
-        uses: dependabot/fetch-metadata@v1.3.6
+        uses: dependabot/fetch-metadata@v1.4.0
         id: dependabot-metadata
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
