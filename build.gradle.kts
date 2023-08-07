@@ -26,7 +26,7 @@ dependencies {
 
     implementation("com.github.ajalt.clikt:clikt:4.2.0")
 
-    implementation(platform("org.http4k:http4k-bom:5.5.0.0"))
+    implementation(platform("org.http4k:http4k-bom:5.6.0.0"))
     implementation("org.http4k:http4k-client-apache")
     implementation("org.http4k:http4k-format-jackson")
 
